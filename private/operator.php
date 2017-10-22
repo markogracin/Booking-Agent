@@ -15,7 +15,7 @@
               <input type="text" placeholder="First name" id="name" name="name" class="formDetails">
               <input type="text" placeholder="Last name" id="surname" name="surname" class="formDetails">
               <input type="text" placeholder="Email" id="email" name="email">
-              <input type="password" placeholder="Password" id="password" name="password">
+              <input type="text" placeholder="Password" id="password" name="password">
               <input type="submit" value="Submit" id="submit" name="submit">
         <?php
           if(isset($_GET['oh_gosh!'])){

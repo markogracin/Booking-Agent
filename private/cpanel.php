@@ -5,7 +5,13 @@
     <?php include_once '../head.php' ?>
     <title><?php echo $title ?></title>
   </head>
-  
+
+<?php
+$do=$db->prepare("select count(booking_id) from reservation");          
+$do->execute();
+$reservationCount = $do->fetchColumn();
+?>
+
   <body>
   <div class="settingsBg"></div>
   <?php include_once 'sidebar.php' ?>
@@ -14,10 +20,8 @@
       <div class="divider"></div>
       <p>Hello admin, check out today's stats:</p>
 
-
-
         <div class="dashboardCard">
-          <h1>Reservations:<br /> <div class="dashboardNumbers">1</div></h1>  
+          <h1>Reservations:<br /> <div class="dashboardNumbers"><?php echo $reservationCount ?></div></h1>  
         </div>
 
         <div class="dashboardCard">
