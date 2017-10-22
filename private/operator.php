@@ -1,9 +1,8 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
+  <?php include_once '../config.php' ?>
   <head>
-    <?php include_once '../config.php' ?>
     <?php include_once '../head.php' ?>
-    <?php loginCheck(); ?>
     <title><?php echo $title ?></title>
   </head>
   <body>
