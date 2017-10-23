@@ -23,10 +23,14 @@
                 ?>
 
                 <select name="property_id" id="property_id">
-                 <option value="" class="agentOption">Select property*</option>
+                 <option class="agentOption">Select property*</option>
 
-                  <?php foreach ($property as $property):?>
-                  <option class="agentOption"><?php echo $property->property_name; ?></option>
+                  <?php 
+                  $properties = $do->fetchAll(PDO::FETCH_OBJ);
+                  foreach ($property as $properties):
+                  ?>
+
+                  <option value=""class="agentOption"><?php echo $property->property_name; ?></option>
                   <?php endforeach; ?>
                 </select>
 
