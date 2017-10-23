@@ -16,20 +16,19 @@
               <input type="text" placeholder="Name" id="guest_name" name="guest_name" class="formDetails">
               <input type="text" placeholder="Email" id="guest_email" name="guest_email">
 
-              <span>
-                <select name="property" id="property">
+                <?php
+                $do = $db->prepare("select * from property");
+                $do->execute();
+                $property = $do->fetchAll(PDO::FETCH_OBJ);
+                ?>
+
+                <select name="property_id" id="property_id">
                  <option value="" class="agentOption">Select property*</option>
 
-                  <?php
-                  $do = $db->prepare("select * from property");
-                  $do->execute();
-                  $property = $do->fetchAll(PDO::FETCH_OBJ);
-                  foreach ($property as $property):?>
+                  <?php foreach ($property as $property):?>
                   <option class="agentOption"><?php echo $property->property_name; ?></option>
                   <?php endforeach; ?>
-
                 </select>
-              </span>
 
               <input type="date" placeholder="Start" id="date_from" name="date_from">
               <input type="date" placeholder="End" id="date_to" name="date_to">
