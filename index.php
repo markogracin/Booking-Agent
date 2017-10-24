@@ -1,8 +1,8 @@
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
   <head>
-    <?php include_once 'config.php' ?>
-    <?php include_once 'head.php' ?>
+    <?php include_once 'config.php'; ?>
+    <?php include_once 'head.php'; ?>
     
     <title><?php echo $title ?></title>
   </head>

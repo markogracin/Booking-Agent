@@ -12,6 +12,13 @@ $password = "marko1234";
 $database = "b8_20140851_bookme";
 $root = "/ZadatakFinal/";
 
+/*
+$host = "localhost";
+$username = "marko";
+$password = "marko";
+$database = "bookme";
+$root = "/agent/";
+*/
 
 
 $db = new PDO("mysql:host=" . $host . ";dbname=" . $database,$username,$password);

@@ -6,11 +6,17 @@
     <title><?php echo $title ?></title>
   </head>
 
-<?php
-$do=$db->prepare("select count(booking_id) from reservation");          
-$do->execute();
-$reservationCount = $do->fetchColumn();
-?>
+  <?php
+  $do=$db->prepare("select count(booking_id) from reservation");          
+  $do->execute();
+  $reservationCount = $do->fetchColumn();
+  ?>
+
+  <?php
+  $do=$db->prepare("select sum(price) from reservation a left join property b on a.property=b.property_id;");          
+  $do->execute();
+  $totalIncome = $do->fetchColumn();
+  ?>
 
   <body>
   <div class="settingsBg"></div>
@@ -21,14 +27,17 @@ $reservationCount = $do->fetchColumn();
       <p>Hello admin, check out today's stats:</p>
 
         <div class="dashboardCard">
-          <h1>Reservations:<br /> <div class="dashboardNumbers"><?php echo $reservationCount ?></div></h1>  
+          <h1>Reservations:<br /> <div class="dashboardNumbers"><?php echo $reservationCount; ?></div></h1>  
         </div>
 
         <div class="dashboardCard">
-          <h1>total income:<br /> <div class="dashboardNumbers">0€</div></h1>  
+          <h1>total income:<br /> <div class="dashboardNumbers"><?php echo $totalIncome; ?> €</div></h1>  
         </div>
 
     </div>
    <?php include_once '../script.php'; ?>
   </body>
 </html>
+
+
+    

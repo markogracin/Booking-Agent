@@ -16,21 +16,18 @@
               <input type="text" placeholder="Name" id="guest_name" name="guest_name" class="formDetails">
               <input type="text" placeholder="Email" id="guest_email" name="guest_email">
 
-                <?php
-                $do = $db->prepare("select * from property");
-                $do->execute();
-                $property = $do->fetchAll(PDO::FETCH_OBJ);
-                ?>
-
-                <select name="property_id" id="property_id">
+                <select name="property_option" id="property_option">
                  <option class="agentOption">Select property*</option>
 
                   <?php 
-                  $properties = $do->fetchAll(PDO::FETCH_OBJ);
+                  $do = $db->prepare("select * from property");
+                  $do->execute();
+                  $property = $do->fetchAll(PDO::FETCH_OBJ);
+                  //$properties = $do->fetchAll(PDO::FETCH_OBJ);
                   foreach ($property as $properties):
                   ?>
 
-                  <option value=""class="agentOption"><?php echo $property->property_name; ?></option>
+                  <option value="<?php echo $properties->property_id; ?>" class="agentOption"><?php echo $properties->property_name; ?></option>
                   <?php endforeach; ?>
                 </select>
 
@@ -55,7 +52,7 @@
         </tr>
 
         <?php
-          $do = $db->prepare("select * from reservation");
+          $do = $db->prepare("select * from reservation a left join property b on a.property=b.property_id");
           $do->execute();
           $reservation = $do->fetchAll(PDO::FETCH_OBJ);
           foreach ($reservation as $reservation):
@@ -63,7 +60,7 @@
             <tr>
             <td><?php echo $reservation->guest_name; ?></td>
             <td><?php echo $reservation->guest_email; ?></td>
-            <td><?php echo $reservation->property; ?></td>
+            <td><?php echo $reservation->property_name; ?></td>
             <td><?php echo $reservation->date_from; ?></td>
             <td><?php echo $reservation->date_to; ?></td>
             <!--td><a href="#" class="primaryColor">EDIT</a></td-->
